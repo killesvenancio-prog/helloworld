@@ -3,28 +3,51 @@ const app = express();
 
 const porta = process.env.PORT || 3000;
 
-// Rota básica
 app.get('/', (req, res) => {
-  res.send('Olá, Mundo!');
+  res.send(`
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="UTF-8">
+      <title>Site Fofo</title>
+      <style>
+        body {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background-color: #ffe6f0;
+          font-family: Arial, sans-serif;
+          flex-direction: column;
+        }
+        button {
+          padding: 15px 25px;
+          font-size: 18px;
+          border: none;
+          border-radius: 10px;
+          background-color: #ff4da6;
+          color: white;
+          cursor: pointer;
+        }
+        button:hover {
+          background-color: #e60073;
+        }
+      </style>
+    </head>
+    <body>
+      <h1> Clique no botão </h1>
+      <button onclick="mostrarMensagem()">Clique aqui</button>
+
+      <script>
+        function mostrarMensagem() {
+          alert("Te amo, amor! 💕");
+        }
+      </script>
+    </body>
+    </html>
+  `);
 });
 
-// Segunda rota
-app.get('/sobre', (req, res) => {
-  res.send('Esta é a página Sobre.');
-});
-
-// Rota com query strings
-app.get('/buscar', (req, res) => {
-  const termo = req.query.termo;
-
-  if (!termo) {
-    return res.send('Você não informou nenhum termo 😅');
-  }
-
-  res.send(`Você buscou por: ${termo}`);
-});
-
-// Inicia o servidor
 app.listen(porta, () => {
-  console.log(`Servidor rodando em http://localhost:${porta}`);
+  console.log("Servidor rodando na porta " + porta);
 });

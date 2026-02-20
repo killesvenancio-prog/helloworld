@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     <html>
     <head>
       <meta charset="UTF-8">
-      <title>Site Fofo</title>
+      <title>pra diuli</title>
       <style>
         body {
           display: flex;
